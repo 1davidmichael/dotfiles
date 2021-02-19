@@ -55,6 +55,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'neoclide/coc.nvim'
 Plug 'kassio/neoterm'
+Plug 'dracula/vim'
 call plug#end()
 
 " Disable mouse in vim
@@ -86,9 +87,9 @@ set number
 " :set number relativenumber
 
 " Set colorscheme to default of SpaceVim
-colorscheme codedark
+colorscheme dracula
 set background=dark
-let g:airline_theme='codedark'
+"let g:airline_theme='codedark'
 
 " json don't conceal syntax
 let g:vim_json_syntax_conceal = 0
