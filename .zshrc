@@ -21,7 +21,7 @@ export NOTE_DIR="$HOME/Code/github/1davidmichael/Notes"
 zstyle :omz:plugins:ssh-agent identities id_rsa id_devops
 
 # Set various paths for tooling if the are present
-[ -f $HOME/.bin ] && export PATH=$PATH:~/.bin
+[ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
 
 if [ -d $HOME/.pyenv ]; then
   export PATH="/home/david-mic/.pyenv/bin:$PATH"
