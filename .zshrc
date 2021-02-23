@@ -1,5 +1,5 @@
 # Path to oh-my-zsh installation.
-export ZSH="/home/david-mic/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set theme
 ZSH_THEME="robbyrussell"
@@ -24,7 +24,7 @@ zstyle :omz:plugins:ssh-agent identities id_rsa id_devops
 [ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
 
 if [ -d $HOME/.pyenv ]; then
-  export PATH="/home/david-mic/.pyenv/bin:$PATH"
+  export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
