@@ -1,10 +1,19 @@
 #!/bin/bash -e
 
+# Install TPM tmux plugin manager
+if [ ! -d $HOME/.tmux/plugins/tpm ]; then
+  mkdir -p $HOME/.tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  $HOME/.tmux/plugins/tpm/bin/install_plugins
+fi
+
+# Install FZF via git
 if [ ! -d $HOME/.fzf ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install --all
 fi
 
+# Install and update all nvim plugins
 if command -v nvim >/dev/null 2>&1; then
   echo "Bootstraping Vim"
   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
