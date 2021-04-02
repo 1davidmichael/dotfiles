@@ -40,6 +40,10 @@ if [ -d  $HOME/.poetry ]; then
   export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
+if [ -d  $HOME/.config/composer/vendor/bin ]; then
+  export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
