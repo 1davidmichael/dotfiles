@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Load plugins
-plugins=(git aws ssh-agent docker)
+plugins=(git aws ssh-agent docker tmux)
 
 source $ZSH/oh-my-zsh.sh
 
