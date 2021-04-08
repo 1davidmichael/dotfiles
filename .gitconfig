@@ -1,5 +1,15 @@
-[includeIf "gitdir:~/Code/github"]
+[user]
+	name = David Michael
+  email = 1.david.michael@gmail.com
+
+[includeIf "gitdir:~/Code/github/"]
   path = ~/Code/github/.gitconfig
 
-[includeIf "gitdir:~/Code/bitbucket"]
+[includeIf "gitdir:~/Code/bitbucket/"]
   path = ~/Code/bitbucket/.gitconfig
+
+[diff]
+	colorMoved = zebra
+
+[rebase]
+	autosquash = true
