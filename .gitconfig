@@ -1,0 +1,5 @@
+[includeIf "gitdir:~/Code/github"]
+  path = ~/Code/github/.gitconfig
+
+[includeIf "gitdir:~/Code/bitbucket"]
+  path = ~/Code/bitbucket/.gitconfig
