@@ -1,5 +1,5 @@
 [user]
-	name = David Michael
+  name = David Michael
   email = 1.david.michael@gmail.com
 
 [includeIf "gitdir:~/Code/github/"]
