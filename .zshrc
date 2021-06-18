@@ -44,6 +44,11 @@ if [ -d  $HOME/.config/composer/vendor/bin ]; then
   export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
+# Optionally add cfn-guard bin dir to path
+if [ -d  $HOME/.guard/bin ]; then
+  export PATH="$HOME/.guard/bin:$PATH"
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
