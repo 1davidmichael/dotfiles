@@ -14,4 +14,8 @@ if [ ! -f "$(date +'%m-%d-%Y').md" ]; then
 fi
 
 git add .
-code $NOTE_DIR/
+if command -v code &> /dev/null; then
+	code $NOTE_DIR/
+else
+	vim $NOTE_DIR/
+fi
