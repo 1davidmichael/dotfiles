@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Load plugins
-plugins=(git aws ssh-agent docker)
+plugins=(git aws docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,9 +23,6 @@ fi
 
 # Set notes dir
 export NOTE_DIR="$HOME/Code/github/1davidmichael/Notes"
-
-# Add ssh keys to ssh-agent
-zstyle :omz:plugins:ssh-agent identities id_rsa id_devops
 
 # Set various paths for tooling if the are present
 [ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
