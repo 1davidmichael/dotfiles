@@ -41,6 +41,10 @@ if [ -d  $HOME/.config/composer/vendor/bin ]; then
   export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
+if [ -d  $HOME/.dotnet/tools ]; then
+  export PATH="$HOME/.dotnet/tools:$PATH"
+fi
+
 # Optionally add cfn-guard bin dir to path
 if [ -d  $HOME/.guard/bin ]; then
   export PATH="$HOME/.guard/bin:$PATH"

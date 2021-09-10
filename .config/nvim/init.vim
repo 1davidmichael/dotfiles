@@ -113,11 +113,11 @@ xnoremap > >gv
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
-" set
-let g:toggleterm_terminal_mapping = '<C-t>'
-" or manually...
-autocmd TermEnter term://*toggleterm#*
-      \ tnoremap <silent><c-t> <C-\><C-n>:exe v:count1 . "ToggleTerm"<CR>
+" " set
+" let g:toggleterm_terminal_mapping = '<C-t>'
+" " or manually...
+" autocmd TermEnter term://*toggleterm#*
+"       \ tnoremap <silent><c-t> <C-\><C-n>:exe v:count1 . "ToggleTerm"<CR>
 
 " By applying the mappings this way you can pass a count to your
 " mapping to open a specific window.
