@@ -11,8 +11,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # Set theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+zstyle :omz:plugins:ssh-agent identities id_rsa id_devops
+
 # Load plugins
-plugins=(git aws docker)
+plugins=(git aws docker  ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
