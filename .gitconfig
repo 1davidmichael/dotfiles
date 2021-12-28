@@ -20,3 +20,5 @@
 	required = true
 [format]
 	pretty = oneline
+[credential]
+	helper = cache

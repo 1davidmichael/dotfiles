@@ -61,6 +61,12 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Alias docker to podman if podman command is present
+# This is to avoid licensing issues on work PC: https://www.docker.com/blog/updating-product-subscriptions/
+if command -v podman &> /dev/null; then
+  alias docker="podman"
+fi
+
 # Set default AWS region to us-east-1
 export AWS_DEFAULT_REGION=us-east-1
 
