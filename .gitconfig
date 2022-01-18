@@ -22,3 +22,5 @@
 	pretty = oneline
 [credential]
 	helper = cache
+[init]
+	defaultBranch = main
