@@ -24,3 +24,9 @@
 	helper = cache
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg.ssh]
+defaultKeyCommand = "ssh-add -L"
+[commit]
+	gpgsign = true
