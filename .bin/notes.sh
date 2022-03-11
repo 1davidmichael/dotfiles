@@ -1,5 +1,12 @@
 #!/bin/bash -e
 
+# An opinionated script on setting up daily notes to be stored in git
+
+# Required environment variables:
+# $NOTED_DIR
+# $NOTE_REPO
+
+# Use number parameter to pre-create notes for future days
 if [ $# -eq 0 ]; then
 	folder_dir=$(date +"%Y/%m")
 	date=$(date +'%m-%d-%Y')
@@ -10,10 +17,9 @@ else
 fi
 
 if [ ! -f $NOTED_DIR ]; then
-	git clone git@github.com:1davidmichael/Notes.git $NOTED_DIR
+	git clone "$NOTE_REPO" "$NOTED_DIR"
 fi
 
-# An opinionated script on setting up daily notes to be stored in git
 cd $NOTE_DIR
 mkdir -p "$folder_dir"
 
@@ -28,3 +34,5 @@ if command -v code &> /dev/null; then
 else
 	vim $NOTE_DIR/
 fi
+
+# vim: ft=bash sw=2 ts=2

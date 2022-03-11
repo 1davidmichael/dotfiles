@@ -29,6 +29,7 @@ fi
 
 # Set notes dir
 export NOTE_DIR="$HOME/Code/github/1davidmichael/Notes"
+export NOTE_REPO="https://github.com/1davidmichael/Notes.git"
 
 # Set various paths for tooling if the are present
 [ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
