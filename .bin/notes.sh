@@ -8,16 +8,16 @@
 
 # Use number parameter to pre-create notes for future days
 if [ $# -eq 0 ]; then
-	folder_dir=$(date +"%Y/%m")
-	date=$(date +'%m-%d-%Y')
+  older_dir=$(date +"%Y/%m")
+  date=$(date +'%m-%d-%Y')
 else
-	day=$1
-	folder_dir=$(date --date="$1 day" +"%Y/%m")
-	date=$(date --date="$1 day" +'%m-%d-%Y')
+  day=$1
+  folder_dir=$(date --date="$1 day" +"%Y/%m")
+  date=$(date --date="$1 day" +'%m-%d-%Y')
 fi
 
 if [ ! -f $NOTED_DIR ]; then
-	git clone "$NOTE_REPO" "$NOTED_DIR"
+  git clone "$NOTE_REPO" "$NOTED_DIR"
 fi
 
 cd $NOTE_DIR
@@ -25,14 +25,14 @@ mkdir -p "$folder_dir"
 
 cd "$folder_dir"
 if [ ! -f "$date.md" ]; then
-	echo "# Notes for $date" > "$date.md"
+  echo "# Notes for $date" > "$date.md"
 fi
 
 git add .
 if command -v code &> /dev/null; then
-	code $NOTE_DIR/
+  code $NOTE_DIR/
 else
-	vim $NOTE_DIR/
+  vim $NOTE_DIR/
 fi
 
 # vim: ft=bash sw=2 ts=2
