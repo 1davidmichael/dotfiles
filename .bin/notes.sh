@@ -10,6 +10,7 @@
 if [ $# -eq 0 ]; then
   older_dir=$(date +"%Y/%m")
   date=$(date +'%m-%d-%Y')
+  folder_dir=$(date +"%Y/%m")
 else
   day=$1
   folder_dir=$(date --date="$1 day" +"%Y/%m")
