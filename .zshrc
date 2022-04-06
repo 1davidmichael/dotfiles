@@ -18,7 +18,7 @@ else
 fi
 
 # Load plugins
-plugins=(git aws docker  ssh-agent)
+plugins=(git aws docker ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -29,7 +29,7 @@ fi
 
 # Set notes dir
 export NOTE_DIR="$HOME/Code/github/1davidmichael/Notes"
-export NOTE_REPO="https://github.com/1davidmichael/Notes.git"
+export NOTE_REPO="git@github.com:1davidmichael/Notes.git"
 
 # Set various paths for tooling if the are present
 [ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
@@ -73,3 +73,4 @@ export AWS_DEFAULT_REGION=us-east-1
 
 # Disable saml2aws keychain for WSL2 compatibility
 export SAML2AWS_DISABLE_KEYCHAIN=true
+
