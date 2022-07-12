@@ -17,11 +17,16 @@ else
   date=$(date --date="$1 day" +'%m-%d-%Y')
 fi
 
+# Clone $NOTE_DIR if it doesn't yet exist
 if [ ! -f $NOTED_DIR ]; then
   git clone "$NOTE_REPO" "$NOTED_DIR"
 fi
 
 cd $NOTE_DIR
+if [ -z "$(git status --porcelain)" ]; then
+  git pull
+fi
+
 mkdir -p "$folder_dir"
 
 cd "$folder_dir"
@@ -32,8 +37,10 @@ fi
 git add .
 if command -v code &> /dev/null; then
   code $NOTE_DIR/
+elif command -v nvim &> /dev/null; then
+  nvim $NOTE_DIR
 else
-  vim $NOTE_DIR/
+  vim $NOTE_DIR
 fi
 
 # vim: ft=bash sw=2 ts=2
