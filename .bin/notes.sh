@@ -38,9 +38,9 @@ git add .
 if command -v code &> /dev/null; then
   code $NOTE_DIR/
 elif command -v nvim &> /dev/null; then
-  nvim $NOTE_DIR
+  nvim $NOTE_DIR/
 else
-  vim $NOTE_DIR
+  vim $NOTE_DIR/
 fi
 
 # vim: ft=bash sw=2 ts=2

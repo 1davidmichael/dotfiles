@@ -30,3 +30,5 @@
 defaultKeyCommand = "ssh-add -L"
 [commit]
 	gpgsign = true
+[pull]
+	rebase = false
