@@ -75,4 +75,4 @@ export AWS_DEFAULT_REGION=us-east-1
 
 # Disable saml2aws keychain for WSL2 compatibility
 export SAML2AWS_DISABLE_KEYCHAIN=true
-
+export TERM=screen-256color-bce
