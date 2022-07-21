@@ -32,3 +32,6 @@ defaultKeyCommand = "ssh-add -L"
 	gpgsign = true
 [pull]
 	rebase = false
+[push]
+	autoSetupRemote = true
+
