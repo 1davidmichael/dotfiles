@@ -8,6 +8,9 @@
 [includeIf "gitdir:~/Code/bitbucket/"]
   path = ~/Code/bitbucket/.gitconfig
 
+[includeIf "gitdir:~/Code/azure/"]
+  path = ~/Code/github/.gitconfig
+
 [diff]
 	colorMoved = zebra
 
