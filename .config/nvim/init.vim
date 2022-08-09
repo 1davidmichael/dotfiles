@@ -58,6 +58,7 @@ Plug 'kassio/neoterm'
 Plug 'dracula/vim'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'earthly/earthly.vim'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " Disable mouse in vim
