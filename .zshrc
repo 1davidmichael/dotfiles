@@ -72,6 +72,8 @@ fi
 
 if [ $(uname) = "Darwin" ]; then
   alias upgrayedd="brew update && brew upgrade"
+else
+  alias upgrayedd="sudo apt update && sudo apt upgrade -y"
 fi
 
 # Set default AWS region to us-east-1
