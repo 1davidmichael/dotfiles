@@ -70,6 +70,10 @@ if command -v podman &> /dev/null; then
   alias docker="podman"
 fi
 
+if [ $(uname) = "Darwin" ]; then
+  alias upgrayedd="brew update && brew upgrade"
+fi
+
 # Set default AWS region to us-east-1
 export AWS_DEFAULT_REGION=us-east-1
 
