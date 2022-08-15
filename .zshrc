@@ -59,6 +59,11 @@ if [ -d  $HOME/.guard/bin ]; then
   export PATH="$HOME/.guard/bin:$PATH"
 fi
 
+# Add Golang bin dir to path
+if [ -d $HOME/go/bin ]; then
+  export PATH="$HOME/go/bin":$PATH
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
