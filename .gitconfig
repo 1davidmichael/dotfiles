@@ -37,4 +37,3 @@ defaultKeyCommand = "ssh-add -L"
 	rebase = false
 [push]
 	autoSetupRemote = true
-

@@ -9,5 +9,5 @@ This repo is deployed using [yadm](https://yadm.io/) and they can be installed l
 [Install yadm](https://yadm.io/docs/install#)
 git
 ```bash
-yadm clone https://github.com/1davidmichael/dotfiles.git
+yadm clone -b main  https://github.com/1davidmichael/dotfiles.git
 ```
