@@ -20,7 +20,7 @@ else
 fi
 
 # Load plugins
-plugins=(git aws docker ssh-agent)
+plugins=(git aws docker ssh-agent terraform)
 
 source $ZSH/oh-my-zsh.sh
 
