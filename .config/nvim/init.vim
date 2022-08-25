@@ -53,7 +53,7 @@ Plug 'cespare/vim-toml'
 Plug 'luochen1990/rainbow'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rhysd/git-messenger.vim'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kassio/neoterm'
 Plug 'dracula/vim'
 Plug 'akinsho/nvim-toggleterm.lua'
