@@ -13,8 +13,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Set theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-if [ -f $HOME/.ssh/id_devops ]; then
-  zstyle :omz:plugins:ssh-agent identities id_rsa id_devops
+if [ -f $HOME/.ssh/id_ed25519 ]; then
+  zstyle :omz:plugins:ssh-agent identities id_ed25519
 else
   zstyle :omz:plugins:ssh-agent identities id_rsa
 fi
@@ -23,6 +23,10 @@ fi
 plugins=(git aws docker ssh-agent terraform)
 
 source $ZSH/oh-my-zsh.sh
+
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Prefer nvim if it exists
 if [ -x "$(command -v nvim)"  ]; then
@@ -87,3 +91,4 @@ export AWS_DEFAULT_REGION=us-east-1
 # Disable saml2aws keychain for WSL2 compatibility
 export SAML2AWS_DISABLE_KEYCHAIN=true
 export TERM=screen-256color-bce
+
