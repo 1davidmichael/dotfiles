@@ -92,3 +92,4 @@ export AWS_DEFAULT_REGION=us-east-1
 export SAML2AWS_DISABLE_KEYCHAIN=true
 export TERM=screen-256color-bce
 
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
