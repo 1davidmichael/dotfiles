@@ -79,6 +79,8 @@ if command -v podman &> /dev/null; then
   alias docker="podman"
 fi
 
+export PATH="$HOME/.rd/bin":"$PATH"
+
 if [ $(uname) = "Darwin" ]; then
   alias upgrayedd="brew update && brew upgrade"
 else
@@ -91,5 +93,16 @@ export AWS_DEFAULT_REGION=us-east-1
 # Disable saml2aws keychain for WSL2 compatibility
 export SAML2AWS_DISABLE_KEYCHAIN=true
 export TERM=screen-256color-bce
+
+# Select editor based on what is available
+if command -v nvim &> /dev/null; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
+# Sets this prevents previous command output to next line
+# # https://stackoverflow.com/questions/30940299/zsh-repeats-command-in-output
+DISABLE_AUTO_TITLE="true"
 
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}

@@ -9,7 +9,7 @@
   path = ~/Code/bitbucket/.gitconfig
 
 [includeIf "gitdir:~/Code/azure/"]
-  path = ~/Code/github/.gitconfig
+  path = ~/Code/azure/.gitconfig
 
 [diff]
 	colorMoved = zebra
@@ -37,3 +37,4 @@ defaultKeyCommand = "ssh-add -L"
 	rebase = false
 [push]
 	autoSetupRemote = true
+

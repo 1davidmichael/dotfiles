@@ -41,10 +41,8 @@ git add .
 # Select editor based on what is available
 if command -v code &> /dev/null; then
   code "$NOTE_DIR/"
-elif command -v nvim &> /dev/null; then
-  nvim "$NOTE_DIR/"
 else
-  vim "$NOTE_DIR/"
+  $EDITOR "$NOTE_DIR/"
 fi
 
 # vim: ft=bash sw=2 ts=2
