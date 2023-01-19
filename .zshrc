@@ -105,4 +105,4 @@ fi
 # # https://stackoverflow.com/questions/30940299/zsh-repeats-command-in-output
 DISABLE_AUTO_TITLE="true"
 
-function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+function gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
