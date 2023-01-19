@@ -38,3 +38,5 @@ defaultKeyCommand = "ssh-add -L"
 [push]
 	autoSetupRemote = true
 
+[core]
+	excludesfile = /Users/dmichael/.gitignore
