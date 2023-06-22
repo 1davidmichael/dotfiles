@@ -11,6 +11,9 @@
 [includeIf "gitdir:~/Code/azure/"]
   path = ~/Code/azure/.gitconfig
 
+[includeIf "gitdir:~/Code/codecommit/"]
+  path = ~/Code/codecommit/.gitconfig
+
 [diff]
 	colorMoved = zebra
 

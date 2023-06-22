@@ -20,7 +20,7 @@ else
 fi
 
 # Load plugins
-plugins=(git aws docker ssh-agent terraform)
+plugins=(git aws docker ssh-agent terraform kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -29,8 +29,8 @@ if [ -f /opt/homebrew/bin/brew ]; then
 fi
 
 # Prefer nvim if it exists
-if [ -x "$(command -v nvim)"  ]; then
-  alias vim="nvim"
+if [ -x "$(command -v lvim)"  ]; then
+  alias vim="lvim"
 fi
 
 # Set notes dir
@@ -43,7 +43,6 @@ export NOTE_REPO="git@github.com:1davidmichael/Notes.git"
 if [ -d $HOME/.pyenv ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
 fi
 
 if [ -d  $HOME/.poetry ]; then
@@ -95,8 +94,8 @@ export SAML2AWS_DISABLE_KEYCHAIN=true
 export TERM=screen-256color-bce
 
 # Select editor based on what is available
-if command -v nvim &> /dev/null; then
-  export EDITOR=nvim
+if command -v lvim &> /dev/null; then
+  export EDITOR=lvim
 else
   export EDITOR=vim
 fi
@@ -106,3 +105,12 @@ fi
 DISABLE_AUTO_TITLE="true"
 
 function gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
+export PATH=/Users/dmichael/.local/bin:$PATH
+
+# bun completions
+[ -s "/Users/dmichael/.bun/_bun" ] && source "/Users/dmichael/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
