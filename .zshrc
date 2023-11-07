@@ -28,9 +28,15 @@ if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# /Users/dmichael/.local/bin
+
+if [ -d $HOME/.local/bin ]; then
+  export PATH="$HOME/.local/bin":$PATH
+fi
+
 # Prefer nvim if it exists
-if [ -x "$(command -v nvim)"  ]; then
-  alias vim="nvim"
+if [ -x "$(command -v lvim)"  ]; then
+  alias vim="lvim"
 fi
 
 # Set notes dir
@@ -40,11 +46,11 @@ export NOTE_REPO="git@github.com:1davidmichael/Notes.git"
 # Set various paths for tooling if the are present
 [ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
 
-if [ -d $HOME/.pyenv ]; then
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+# if [ -d $HOME/.pyenv ]; then
+#   export PATH="$HOME/.pyenv/bin:$PATH"
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi
 
 if [ -d  $HOME/.poetry ]; then
   export PATH="$HOME/.poetry/bin:$PATH"
@@ -73,12 +79,6 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Alias docker to podman if podman command is present
-# This is to avoid licensing issues on work PC: https://www.docker.com/blog/updating-product-subscriptions/
-if command -v podman &> /dev/null; then
-  alias docker="podman"
-fi
-
 export PATH="$HOME/.rd/bin":"$PATH"
 
 if [ $(uname) = "Darwin" ]; then
@@ -96,6 +96,8 @@ export TERM=screen-256color-bce
 
 # Select editor based on what is available
 if command -v nvim &> /dev/null; then
+  export EDITOR=lvim
+elif command -v nvim &> /dev/null; then
   export EDITOR=nvim
 else
   export EDITOR=vim
@@ -106,3 +108,4 @@ fi
 DISABLE_AUTO_TITLE="true"
 
 function gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

@@ -38,11 +38,6 @@ fi
 
 git add .
 
-# Select editor based on what is available
-if command -v code &> /dev/null; then
-  code "$NOTE_DIR/"
-else
-  $EDITOR "$NOTE_DIR/"
-fi
+$EDITOR "$NOTE_DIR/"
 
 # vim: ft=bash sw=2 ts=2
