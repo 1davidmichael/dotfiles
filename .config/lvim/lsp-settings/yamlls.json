@@ -1,0 +1,24 @@
+{
+  "yaml.schemaStore.enable": true,
+  "yaml.customTags": [
+    "!fn",
+    "!And",
+    "!If sequence",
+    "!Not sequence",
+    "!Equals sequence",
+    "!Or",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Cidr",
+    "!Ref",
+    "!Ref Scalar",
+    "!Sub",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!Select",
+    "!Split",
+    "!Join sequence"
+  ],
+  "yaml.format.enable": true
+}
