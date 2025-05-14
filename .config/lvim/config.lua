@@ -1,4 +1,4 @@
---[[
+-[[
 lvim is the global options object
 
 Linters should be
@@ -21,8 +21,8 @@ vim.opt.mouse = ""
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-vim.keymap.set('i', '<C-e>', '<Plug>(copilot-next)')
-vim.keymap.set('i', '<C-r>', '<Plug>(copilot-previous)')
+-- vim.keymap.set('i', '<C-e>', '<Plug>(copilot-next)')
+-- vim.keymap.set('i', '<C-r>', '<Plug>(copilot-previous)')
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -170,26 +170,16 @@ linters.setup {
 --     filetypes = { "javascript", "python" },
 --   },
 -- }
-require("lvim.lsp.manager").setup("marksman", {
-  filetypes = { "markdown" },
-})
 
 -- Additional Plugins
 lvim.plugins = {
   {"dracula/vim"},
   {"pocco81/auto-save.nvim"},
   {
-    "github/copilot.vim",
-    config = function()
-      vim.g.copilot_filetypes = {
-        ["*"] = true,
-      }
-
-      vim.cmd([[
-        imap <silent><script><expr> <C-A> copilot#Accept("\<CR>")
-        let g:copilot_no_tab_map = v:true
-      ]])
-    end,
+    "sourcegraph/sg.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    }
   },
   {"gpanders/editorconfig.nvim"},
   {"iamcco/markdown-preview.nvim"}
@@ -208,3 +198,6 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+
+require("sg").setup()
+

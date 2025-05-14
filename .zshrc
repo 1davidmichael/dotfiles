@@ -96,7 +96,7 @@ export TERM=screen-256color-bce
 
 # Select editor based on what is available
 if command -v nvim &> /dev/null; then
-  export EDITOR=lvim
+  export EDITOR=nvim
 elif command -v nvim &> /dev/null; then
   export EDITOR=nvim
 else
@@ -109,3 +109,24 @@ DISABLE_AUTO_TITLE="true"
 
 function gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+export PATH="/opt/homebrew/opt/gradle@7/bin:$PATH"
+
+export PATH="$HOME/.bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Added by Windsurf
+export PATH="/Users/david.michael/.codeium/windsurf/bin:$PATH"

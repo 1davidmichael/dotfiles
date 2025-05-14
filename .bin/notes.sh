@@ -38,6 +38,4 @@ fi
 
 git add .
 
-$EDITOR "$NOTE_DIR/"
-
 # vim: ft=bash sw=2 ts=2

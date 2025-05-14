@@ -1,43 +1,13 @@
+# This is Git's per-user configuration file.
 [user]
-  name = David Michael
-  email = 1.david.michael@gmail.com
-
-[includeIf "gitdir:~/Code/github/"]
-  path = ~/Code/github/.gitconfig
-
-[includeIf "gitdir:~/Code/bitbucket/"]
-  path = ~/Code/bitbucket/.gitconfig
-
-[includeIf "gitdir:~/Code/azure/"]
-  path = ~/Code/azure/.gitconfig
-
-[diff]
-	colorMoved = zebra
-
-[rebase]
-	autosquash = true
-	instructionFormat = (%an <%ae>) %s
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[format]
-	pretty = oneline
-[credential]
-	helper = cache
-[init]
-	defaultBranch = main
-[gpg]
-	format = ssh
-[gpg.ssh]
-defaultKeyCommand = "ssh-add -L"
-[commit]
-	gpgsign = true
-[pull]
-	rebase = false
+# Please adapt and uncomment the following lines:
+	name = David Michael
+	email = david.michael@dotdashmdp.com
+	signingkey = 2E66E1B7D4772CF5
 [push]
 	autoSetupRemote = true
+[commit]
+	gpgsign = true
+[alias]
+    lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
 
-[core]
-	excludesfile = /Users/dmichael/.gitignore
