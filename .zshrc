@@ -13,7 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Set theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-if [ -f $HOME/.ssh/id_ed25519 ]; then
+if [ -f "$HOME/.ssh/id_ed25519" ]; then
   zstyle :omz:plugins:ssh-agent identities id_ed25519
 else
   zstyle :omz:plugins:ssh-agent identities id_rsa
@@ -24,62 +24,115 @@ plugins=(git aws docker ssh-agent terraform)
 
 source $ZSH/oh-my-zsh.sh
 
+# ── Environment Variables ─────────────────────────────────────────────────────
+
+export NOTE_DIR="$HOME/Code/github/1davidmichael/Notes"
+export NOTE_REPO="git@github.com:1davidmichael/Notes.git"
+
+export AWS_DEFAULT_REGION=us-east-1
+
+# Disable saml2aws keychain for WSL2 compatibility
+export SAML2AWS_DISABLE_KEYCHAIN=true
+export TERM=screen-256color-bce
+
+# Prevents previous command output bleeding into next line prompt
+# https://stackoverflow.com/questions/30940299/zsh-repeats-command-in-output
+DISABLE_AUTO_TITLE="true"
+
+# ── Editor ────────────────────────────────────────────────────────────────────
+
+if command -v nvim &> /dev/null; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
+# ── PATH Additions ────────────────────────────────────────────────────────────
+
 if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# /Users/dmichael/.local/bin
-
-if [ -d $HOME/.local/bin ]; then
-  export PATH="$HOME/.local/bin":$PATH
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Prefer nvim if it exists
-if [ -x "$(command -v lvim)"  ]; then
-  alias vim="lvim"
+if [ -d "$HOME/.bin" ]; then
+  export PATH="$HOME/.bin:$PATH"
 fi
 
-# Set notes dir
-export NOTE_DIR="$HOME/Code/github/1davidmichael/Notes"
-export NOTE_REPO="git@github.com:1davidmichael/Notes.git"
+if [ -d "$HOME/.pyenv" ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
-# Set various paths for tooling if the are present
-[ -d $HOME/.bin ] && export PATH=$PATH:~/.bin
-
-# if [ -d $HOME/.pyenv ]; then
-#   export PATH="$HOME/.pyenv/bin:$PATH"
-#   eval "$(pyenv init -)"
-#   eval "$(pyenv virtualenv-init -)"
-# fi
-
-if [ -d  $HOME/.poetry ]; then
+if [ -d "$HOME/.poetry/bin" ]; then
   export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
-if [ -d  $HOME/.config/composer/vendor/bin ]; then
+if [ -d "$HOME/.config/composer/vendor/bin" ]; then
   export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
-if [ -d  $HOME/.dotnet/tools ]; then
+if [ -d "$HOME/.dotnet/tools" ]; then
   export PATH="$HOME/.dotnet/tools:$PATH"
 fi
 
-# Optionally add cfn-guard bin dir to path
-if [ -d  $HOME/.guard/bin ]; then
+if [ -d "$HOME/.guard/bin" ]; then
   export PATH="$HOME/.guard/bin:$PATH"
 fi
 
-# Add Golang bin dir to path
-if [ -d $HOME/go/bin ]; then
-  export PATH="$HOME/go/bin":$PATH
+if [ -d "$HOME/go/bin" ]; then
+  export PATH="$HOME/go/bin:$PATH"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export NVM_DIR="$HOME/.nvm"
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  source "/opt/homebrew/opt/nvm/nvm.sh"
+fi
+if [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ]; then
+  source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [ -d "${KREW_ROOT:-$HOME/.krew}/bin" ]; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
 
-export PATH="$HOME/.rd/bin":"$PATH"
+if [ -d "/opt/homebrew/opt/node@22/bin" ]; then
+  export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+fi
+
+if [ -d "$HOME/.jenv/bin" ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
+
+if [ -d "/opt/homebrew/opt/gradle@7/bin" ]; then
+  export PATH="/opt/homebrew/opt/gradle@7/bin:$PATH"
+fi
+
+if [ -d "/opt/homebrew/opt/openjdk/bin" ]; then
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fi
+
+if [ -d "$HOME/.rvm/bin" ]; then
+  export PATH="$PATH:$HOME/.rvm/bin"
+fi
+
+if [ -d "$HOME/.codeium/windsurf/bin" ]; then
+  export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+fi
+
+if [ -d "$HOME/.rd/bin" ]; then
+  export PATH="$HOME/.rd/bin:$PATH"
+fi
+
+if [ -x "/usr/libexec/java_home" ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+fi
+
+# ── Aliases ───────────────────────────────────────────────────────────────────
 
 if [ $(uname) = "Darwin" ]; then
   alias upgrayedd="brew update && brew upgrade"
@@ -87,46 +140,17 @@ else
   alias upgrayedd="sudo apt update && sudo apt upgrade -y"
 fi
 
-# Set default AWS region to us-east-1
-export AWS_DEFAULT_REGION=us-east-1
-
-# Disable saml2aws keychain for WSL2 compatibility
-export SAML2AWS_DISABLE_KEYCHAIN=true
-export TERM=screen-256color-bce
-
-# Select editor based on what is available
-if command -v nvim &> /dev/null; then
-  export EDITOR=nvim
-elif command -v nvim &> /dev/null; then
-  export EDITOR=nvim
-else
-  export EDITOR=vim
+if [ -x "$(command -v lvim)" ]; then
+  alias vim="lvim"
 fi
 
-# Sets this prevents previous command output to next line
-# # https://stackoverflow.com/questions/30940299/zsh-repeats-command-in-output
-DISABLE_AUTO_TITLE="true"
+# ── Functions ─────────────────────────────────────────────────────────────────
 
 function gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# ── Tool Sourcing ─────────────────────────────────────────────────────────────
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
-export PATH="/opt/homebrew/opt/gradle@7/bin:$PATH"
-
-export PATH="$HOME/.bin:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Added by Windsurf
-export PATH="/Users/david.michael/.codeium/windsurf/bin:$PATH"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
